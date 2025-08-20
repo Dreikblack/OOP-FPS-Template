@@ -37,21 +37,21 @@
 			{
 				"filecategory": "SOUND",
 				"label": "Alert sound",
-				"name": "alertsound",
+				"name": "alertSound",
 				"type": "SOUND",
 				"value": ""
 			},
 			{
 				"filecategory": "SOUND",
 				"label": "Attack sound 1",
-				"name": "attacksound1",
+				"name": "attackSound1",
 				"type": "SOUND",
 				"value": ""
 			},
 			{
 				"filecategory": "SOUND",
 				"label": "Attack sound 2",
-				"name": "attacksound2",
+				"name": "attackSound2",
 				"type": "SOUND",
 				"value": ""
 			},

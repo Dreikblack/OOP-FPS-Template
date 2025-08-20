@@ -1,11 +1,22 @@
 local Interfaces = {}
 
 -- methods: { methodName = function() ... end, ... }
-function CreateInterface(name, methods)
+function CreateInterface(name, members)
     local interface = {
         name = name,
-        methods = methods or {}
+        methods = {},
+        vars = {}
     }
+     if members then
+        for k, v in pairs(members) do
+            if type(v) == "function" then
+                interface.methods[k] = v
+            else
+                -- для "переменных" v == true или любое значение по умолчанию
+                interface.vars[k] = v
+            end
+        end
+    end
     Interfaces[name] = interface
     return interface
 end
@@ -32,6 +43,13 @@ local function ImplementsInterface(obj, interfaceName)
         if type(obj[methodName]) ~= "function" then
             -- if no function, then use default function
             obj[methodName] = defaultFunc
+        end
+    end
+    for varName, defaultValue in pairs(interface.vars) do
+        if obj[varName] == nil then
+            if defaultValue ~= nil then
+                obj[varName] = defaultValue          
+            end
         end
     end
     return true

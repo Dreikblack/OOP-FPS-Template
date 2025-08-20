@@ -1,4 +1,5 @@
-SlidingDoor = {}
+SlidingDoor = CreateClass("SlidingDoor")
+SlidingDoor:AddInterface("Usable")
 SlidingDoor.name = "SlidingDoor"
 SlidingDoor.pin = Vec3(128,0,0)--"Movement"
 SlidingDoor.movespeed = 100--"Speed"

@@ -50,22 +50,6 @@ function Bullet:Start()
     self.emitters[1]:SetMaterial(LoadMaterial("Materials/Particles/smoke.mat"))
     self.emitters[1]:Pause()
     self.emitters[1]:SetHidden(true)
-
-    -- TODO - Ricochet debris particles
-    --[[
-    self.emitters[2] = CreateParticleEmitter(world, 10)
-    self.emitters[2]:SetEmissionQuantity(10)
-    self.emitters[2]:SetEmissionFrequency(500)
-    self.emitters[2]:SetParticleTurbulence(0)
-    self.emitters[2]:SetParticleRadius(0.25, 0.25)
-    self.emitters[2]:SetParticleColor(Vec4(1, 1, 1, 1), Vec4(1, 1, 1, 0))
-    self.emitters[2]:SetParticleAcceleration(0, -9.8, 0)
-    self.emitters[2]:SetParticleRandomVelocity(3, 3, 3)
-    self.emitters[2]:SetLooping(false)
-    self.emitters[2]:SetMaterial(LoadMaterial("Materials/Particles/bulletfragments.mat"))
-    self.emitters[2]:Pause()
-    self.emitters[2]:SetHidden(true)
-    ]]
 end
 
 function Bullet:Load(properties, binstream, scene, flags, extra)
@@ -115,16 +99,9 @@ function Bullet:Update()
         end
 
 		local n
-        if type(pickinfo.entity.health) == "number" then
-            pickinfo.entity.health = pickinfo.entity.health - self.damage
-            for n = 1, #pickinfo.entity.components do
-                if type(pickinfo.entity.components[n].Damage) == "function" then
-                    pickinfo.entity.components[n]:Damage(self.damage, entity)
-                end
-                if pickinfo.entity.health <= 0 and type(pickinfo.entity.components[n].Kill) == "function" then
-                    pickinfo.entity.components[n]:Kill()
-                end
-            end
+        local killable = GetComponentByInterface(pickinfo.entity, "Killable")
+        if killable then
+            killable:Damage(self.damage, entity)
         end
         
         entity:SetPosition(pickinfo.position)
@@ -145,14 +122,6 @@ function Bullet:Update()
         self.emitters[1]:SetParticleVelocity(pickinfo.normal)
         self.emitters[1]:SetHidden(false)
         self.emitters[1]:Play()
-
-        --[[
-        --TODO: Add ricochet / chunks
-        self.emitters[2]:SetPosition(pickinfo.position)
-        self.emitters[2]:SetParticleVelocity(pickinfo.normal * 4.0)
-        self.emitters[2]:SetHidden(false)
-        self.emitters[2]:Play()
-        ]]
 
         self.decal:SetColor(1,1,1,4)
         local t = CreateTween(self.decal, 8000, TWEEN_COLOR, Vec4(1, 1, 1, 0))

@@ -1,4 +1,5 @@
-PushButton = {}
+PushButton = CreateClass("PushButton")
+PushButton:AddInterface("Usable")
 PushButton.name = "PushButton"
 PushButton.enabled = true--"Enabled"
 

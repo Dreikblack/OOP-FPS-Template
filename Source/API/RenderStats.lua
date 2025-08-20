@@ -1,0 +1,15 @@
+---@meta
+---@class RenderStats
+---@field cameras number
+---@field cullingtime number
+---@field instances number
+---@field framerate number
+---@field meshbatches number
+---@field polygons number
+---@field shaderbatches number
+---@field shadows number
+---@field shadowpolygons number
+---@field rendertime number
+---@field vertices number
+---@field vram number
+

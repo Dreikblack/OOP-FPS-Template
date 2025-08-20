@@ -1,4 +1,5 @@
-SwingingDoor = {} 
+SwingingDoor = CreateClass("SwingingDoor")
+SwingingDoor:AddInterface("Usable")
 SwingingDoor.name = "SwingingDoor"
 SwingingDoor.pin = Vec3(0,90,0)--"Rotation"
 SwingingDoor.movespeed = 60.0--"Speed"

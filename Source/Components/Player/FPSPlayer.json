@@ -38,42 +38,42 @@
 			},
 			{
 				"label": "Eye height",
-				"name": "eyeheight",
+				"name": "eyeHeight",
 				"value": 1.65
 			},
 			{
 				"label": "Crouch eye height",
-				"name": "croucheyeheight",
+				"name": "crouchEyeHeight",
 				"value": 0.7
 			},
 			{
 				"label": "Mouse smoothing",
-				"name": "mousesmoothing",
+				"name": "mouseSmoothing",
 				"value": 2.0
 			},
 			{
 				"label": "Mouse look smooth",
-				"name": "mouselookspeed",
+				"name": "mouseLookSpeed",
 				"value": 1.0
 			},
 			{
 				"label": "Move speed",
-				"name": "movespeed",
+				"name": "moveSpeed",
 				"value": 4.0
 			},
 			{
 				"label": "Jump force",
-				"name": "jumpforce",
+				"name": "jumpForce",
 				"value": 5.0
 			},
 			{
 				"label": "Jump lunge",
-				"name": "jumplunge",
+				"name": "jumpLunge",
 				"value": 1.2
 			},
 			{
 				"label": "Initial slot",
-				"name": "initialslot",
+				"name": "initialSlot",
 				"options":
 				[
 					"Slot 1",
