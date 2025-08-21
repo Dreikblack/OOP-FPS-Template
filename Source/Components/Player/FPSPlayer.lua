@@ -1,4 +1,4 @@
-FPSPlayer = CreateClass("Mover")
+FPSPlayer = CreateClass("FPSPlayer")
 FPSPlayer:AddInterface("Killable")
 FPSPlayer.name = "FPSPlayer"
 FPSPlayer.enabled = true -- "Enabled"
@@ -73,7 +73,6 @@ function FPSPlayer:Load(properties, binstream, scene, flags, extra)
         self.usePromtTile:SetPosition(cx, cy)
         self.healthTile = CreateTile(self.camera, font, "Heath:"..tostring(Round(self.health)), 20, TEXT_CENTER, 1.5)
         self.healthTile:SetPosition(100, fbSize.y - 100)
-        self.healthTile:SetHidden(true)
     end
 
     local pos = entity:GetPosition(true)
@@ -441,8 +440,7 @@ function FPSPlayer:DamageEffect(amount, attacker)
             self.soundHit[index]:Play()
         end
     end
-    --SetText not exposed in Lua....
-    --self.healthTile:SetText("Heath:"..tostring(Round(self.health)))
+    self.healthTile:SetText("Heath:"..tostring(Round(self.health)))
 end
 
 function FPSPlayer:Kill()
